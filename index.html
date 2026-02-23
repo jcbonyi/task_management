@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insurance Compliance Task Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Insurance Compliance Task Manager</h1>
+      <p>Track audits, filings, training, and regulatory deadlines in one place.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel form-panel">
+        <h2>Create Task</h2>
+        <form id="task-form">
+          <label>
+            Task title
+            <input id="title" name="title" type="text" required placeholder="e.g., Complete annual privacy audit" />
+          </label>
+
+          <label>
+            Category
+            <select id="category" name="category" required>
+              <option value="Regulatory Filing">Regulatory Filing</option>
+              <option value="Audit">Audit</option>
+              <option value="Training">Training</option>
+              <option value="Policy Review">Policy Review</option>
+              <option value="Incident Response">Incident Response</option>
+            </select>
+          </label>
+
+          <label>
+            Priority
+            <select id="priority" name="priority" required>
+              <option value="High">High</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+
+          <label>
+            Due date
+            <input id="dueDate" name="dueDate" type="date" required />
+          </label>
+
+          <label>
+            Assigned to
+            <input id="owner" name="owner" type="text" required placeholder="e.g., Compliance Analyst" />
+          </label>
+
+          <label>
+            Regulatory reference
+            <input id="reference" name="reference" type="text" placeholder="e.g., NAIC Model #668" />
+          </label>
+
+          <label>
+            Notes
+            <textarea id="notes" name="notes" rows="3" placeholder="Add details, evidence requirements, or filing notes"></textarea>
+          </label>
+
+          <button type="submit">Add Task</button>
+        </form>
+      </section>
+
+      <section class="panel board-panel">
+        <div class="toolbar">
+          <h2>Task Board</h2>
+          <div class="filters">
+            <label>
+              Filter by status
+              <select id="status-filter">
+                <option value="All">All</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Blocked">Blocked</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div id="summary" class="summary"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>Due</th>
+                <th>Owner</th>
+                <th>Status</th>
+                <th>Reference</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="task-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <template id="task-row-template">
+      <tr>
+        <td class="title-cell"></td>
+        <td class="category-cell"></td>
+        <td class="priority-cell"></td>
+        <td class="due-cell"></td>
+        <td class="owner-cell"></td>
+        <td class="status-cell"></td>
+        <td class="reference-cell"></td>
+        <td class="actions-cell"></td>
+      </tr>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
